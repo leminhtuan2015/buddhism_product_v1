@@ -1,0 +1,3 @@
+<% @photos.each do |photo|%>
+  <%= link_to photo.name, photo_store_photo_path(photo.photo_store, photo) %>
+<% end %>

@@ -1,0 +1,29 @@
+common: &common
+  encoding: utf8
+  reconnect: false
+  pool: 5
+
+development:
+  <<: *common
+  adapter: sqlite3
+  host: localhost
+  username: root
+  password: 
+  database: buddhism_development
+
+test:
+  <<: *common
+  database: buddhism_test
+
+staging:
+  <<: *common
+  database: buddhism_staging
+
+production:
+  <<: *common
+  adapter: mysql2
+  host: framgia.cxcdrz4r6cis.us-west-2.rds.amazonaws.com
+  port: 3306
+  username: root
+  password: toortoor
+  database: Demo

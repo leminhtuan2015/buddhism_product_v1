@@ -1,0 +1,16 @@
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail thumbnail_w_h">
+      <%= link_to (image_tag photo.url_url),
+        photo.url_url, class: 'fancybox', "data-fancybox-group"=>"gallery" %>
+      <div class="caption center">
+        <%= link_to photo.name, photo_store_album_photo_path(@photo_store, @album, photo) %>
+        <%= photo.description %>
+      <div class="small_info_time">
+        <%= photo.created_at.to_date %>
+     </div>
+    <div class="album_binhluan">
+        <%= link_to "Bình luận", photo_store_album_photo_path(@photo_store, @album, photo) %>
+     </div>
+      </div>
+    </div>
+ </div> 

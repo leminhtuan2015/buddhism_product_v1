@@ -1,0 +1,7 @@
+<% if logged_in? %>
+<li><%= link_to "Đăng xuất", logout_path,
+                method: "delete" %>
+      </li>
+<% else %>
+  <li><%= link_to "Đăng nhập", login_path %></li>
+<% end %>

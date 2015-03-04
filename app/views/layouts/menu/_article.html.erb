@@ -1,0 +1,20 @@
+<li>
+  <a class="top-heading" href="#">
+    Luận
+  </a>
+  <i class="caret"></i>     
+  <div class="dropdown">
+  <div class="dd-inner">
+    <div class="column">
+      <h4><u>Luận</u></h4>
+      <% @article_stores = ArticleStore.all %>
+      <% @article_stores.each do |article_store| %>
+        <%= link_to article_store.name, article_store_path(article_store) %>
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to "Create", new_article_store_path %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</li>

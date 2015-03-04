@@ -1,0 +1,42 @@
+<ol class="breadcrumb">
+  <liv class="active">
+    <%= "Lời ngỏ" %>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+            <%= link_to "Add",  new_home_path%>
+          </li>
+          <li role="presentation">
+            <% if Home.first != nil%>
+          	<%= link_to "Edit",  edit_home_path(Home.first)%>
+            <% end %>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+          	
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<div class="col-xs-10 col-md-8">
+<div class="jumbotron jumbotron_clip bg_white_color vertical-center">
+<h3><a><i>Lời ngỏ</i></a></h3>
+<% if Home.first != nil%>
+<%= Home.first.content.html_safe %>
+<% end %>
+</div>
+</div>
+

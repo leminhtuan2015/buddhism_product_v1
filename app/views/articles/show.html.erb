@@ -1,0 +1,88 @@
+ <div id="fb-root"></div>
+<ol class="breadcrumb">
+  <li><%= link_to "Luận"%></li>
+  <li>
+    <%= link_to @article.article_store.name, article_store_path(@article.article_store) %>
+  </li>
+  <li>
+    <%= @article.name %>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+            <%= link_to "Edit.", edit_article_store_article_path(@article.article_store, @article) %>
+          </li>
+          <li role="presentation">
+            <%= link_to "Delete.", article_store_article_path(@article.article_store, @article),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+          	
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+ <% end %> 
+
+  <div class="jumbotron jumbotron_clip">
+  <i><div class="small_info_time">
+<%= @article.created_at.to_date.to_date%>
+</div></i>
+  <div class="title_show">
+      <%= @article.name %>
+  </div>
+  <%= @article.content.squish.html_safe%>
+  <br>
+  <i>
+  Trích dẫn : <%= @article.description %>
+  <br><br>
+  Tác giả : <%= @article.author %>
+  <br><br>
+   Dịch giả : <%= @article.translator %>
+   </i>
+          <br><br><br><br>
+          <div class="fb-like" data-href=<%= request.original_url %> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+</div>
+
+<div class="breadcrumb_retative">
+<ol class="breadcrumb breadcrumb_retative">
+  <li><%= link_to "Bài liên quan"%></li>
+  </ol>
+  </div>
+<div class=" bg_white_color breadcrumb_retative ">
+<% @article.article_store.articles.sample(10).each do |article| %>
+  <div class=" thumbnail caption news_title_thumnail ">
+  <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+   <%= link_to article.name, article_store_article_path(article.article_store, article) %>
+      <div class="small_info_time">
+      <%= article.created_at.to_date %>
+     </div>
+   </div>  
+<hr>
+<% end %>
+</div>
+
+<div class="jumbotron jumbotron_clip">
+  <div class="fb-comments" 
+    data-href=<%= request.original_url %> data-width="100%" data-numposts="5" data-colorscheme="light">
+  </div>
+</div>
+
+
+
+
+
+

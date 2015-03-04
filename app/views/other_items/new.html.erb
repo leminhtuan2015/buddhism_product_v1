@@ -1,0 +1,11 @@
+<div class="bs-example" data-example-id="basic-forms">
+  <%= form_for [@other, @other.other_items.build] do |f| %>
+    <div class="form-group">
+      <label>Name</label>
+      <%= f.text_field :name, class: "form-control",
+                                  placeholder: "Name" %>
+    </div>
+    <button type="submit" class="btn btn-default">Create
+    </button>
+  <% end %>
+</div>

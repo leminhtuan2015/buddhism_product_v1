@@ -1,0 +1,20 @@
+<li>
+  <a class="top-heading" href="#">
+    Kinh
+  </a>
+  <i class="caret"></i>       
+  <div class="dropdown">
+  <div class="dd-inner">
+    <div class="column">
+      <h4><u>Kinh</u></h4>
+      <% @book_stores = BookStore.all %>
+       <% @book_stores.each do |book_store| %>
+         <%= link_to book_store.name, book_store_path(book_store) %>
+        <% end %>
+        <% if logged_in? %>
+          <%= link_to "Create", new_book_store_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

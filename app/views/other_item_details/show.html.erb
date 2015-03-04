@@ -1,0 +1,52 @@
+ <div id="fb-root"></div>
+
+<ol class="breadcrumb">
+  <li><%= link_to "Mục khác"%></li>
+  <li><%= link_to @other.name, other_path(@other)%></li>
+  <li>
+    <%= link_to @other_item.name, other_other_item_path(@other, @other_item) %>
+  </li>
+  <li>
+    <%= @other_item_detail.name %>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+            <%= link_to "Edit.", edit_other_other_item_other_item_detail_path(@other, @other_item, @other_item_detail) %>
+          </li>
+          <li role="presentation">
+            <%= link_to "Delete.", other_other_item_other_item_detail_path(@other, @other_item, @other_item_detail),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<div class="jumbotron jumbotron_clip">
+  <h3 class="center">
+    <a>
+      <%= @other_item_detail.name %>
+    </a>
+  </h3>
+  <br>
+  <%= @other_item_detail.content.html_safe%>
+  <br><br>
+</div>
+
+<div class="jumbotron jumbotron_clip">
+  <div class="fb-comments" 
+    data-href=<%= request.original_url %> data-width="100%" data-numposts="5" data-colorscheme="light">
+  </div>
+</div>

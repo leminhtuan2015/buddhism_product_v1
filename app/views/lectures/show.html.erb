@@ -1,0 +1,90 @@
+ <div id="fb-root"></div>
+<ol class="breadcrumb">
+  <li><%= link_to "Bài giảng"%></li>
+  <li>
+    <%= link_to @lecture.lecture_store.name, lecture_store_path(@lecture.lecture_store) %> 
+  </li>
+  <li class="active">
+    <%= @lecture.name %>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+            <%= link_to "Edit.", edit_lecture_store_lecture_path(@lecture.lecture_store, @lecture) %>
+          </li>
+          <li role="presentation">
+            <%= link_to "Delete.", lecture_store_lecture_path(@lecture.lecture_store, @lecture),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<div>
+  <div class="thumbnail thumbnail_w_h_lecture">
+    <iframe width="700" height="400" 
+        src=<%= @lecture.url %> 
+        frameborder="0" allowfullscreen>
+    </iframe>
+    <div class= "lecture_title">
+      <%= @lecture.name%>
+    </div>
+    <div class="small_info_time">
+     <%= @lecture.created_at.to_date %>
+       </div>
+
+      <div class="fb-like" data-href=<%= request.original_url %> data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+    </div>
+ </div>
+
+<div class="breadcrumb_lecture_retative">
+<ol class="breadcrumb breadcrumb_lecture_retative bg_breadcrumb" >
+  <li><%= link_to "Bài liên quan"%></li>
+  </ol>
+<div>
+<% @lecture.lecture_store.lectures.sample(5).each do |lecture| %>
+<% @image = lecture.url.split('/').last %>
+<% @img = "http://img.youtube.com/vi/#{@image}/0.jpg" %>
+<div class="bs-example" data-example-id="simple-thumbnails">
+<div class="thumbnail thumbnail_w_h_lecture_relates">
+    <div class="thumbnail thumbnail_w_h_lecture_relate">
+    <%= link_to image_tag(@img), lecture_store_lecture_path(@lecture.lecture_store, lecture) %>
+
+    </div>
+    <div class="lecture_title_1">
+      <%= link_to lecture.name, lecture_store_lecture_path(@lecture.lecture_store, lecture)%>
+   </div>
+  <div class="small_info_time">
+    <%= lecture.created_at.to_date %>
+  </div>
+
+</div>
+</div>
+<% end %>
+</div>
+</div>
+
+ <div>
+  <div class="fb-comments" 
+    data-href=<%= request.original_url %> data-width="700px" data-numposts="5" data-colorscheme="light">
+  </div>
+</div>
+
+ 

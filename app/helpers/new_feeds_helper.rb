@@ -1,0 +1,2 @@
+module NewFeedsHelper
+end

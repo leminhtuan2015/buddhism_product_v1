@@ -1,0 +1,6 @@
+<% if logged_in? %>
+         <%= link_to "Edit", edit_other_path(@other) %>
+         <%= link_to "Del.", other_path(@other),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+<% end %>                    

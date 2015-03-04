@@ -1,0 +1,31 @@
+<li class="full-width">
+  <span class="top-heading">Mục khác</span>
+  <i class="caret"></i>           
+  <div class="dropdown right-aligned">
+    <div class="dd-inner">
+      <% others = Other.all%>
+      <% others.each do |other| %>
+        <div class="column">
+          <h4><u>
+            <%= link_to other.name, other_path(other) %>
+          </h4></u>
+            <% other.other_items.each do |other_item| %>
+          <%= link_to other_item.name, other_other_item_path(other, other_item) %>
+         <% end %>
+        <% if logged_in? %>
+          <%= link_to "Create", new_other_other_item_path(other) %>
+        <% end %>
+        </div>
+      <% end %>
+
+      <% if logged_in? %>
+       <div class="column">
+         <h4>Suppervisor</h4>
+         <%= link_to "Log out", logout_path, method: :delete %>
+         <%= link_to "Banner", banners_path %>
+         <%= link_to "Create", new_other_path %>
+       </div>
+      <% end %>
+    </div>
+  </div>
+</li>

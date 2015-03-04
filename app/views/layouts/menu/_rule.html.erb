@@ -1,0 +1,20 @@
+<li>
+  <a class="top-heading" href="#">
+    Luật
+  </a>
+  <i class="caret"></i>     
+  <div class="dropdown">
+  <div class="dd-inner">
+    <div class="column">
+      <h4><u>Luật</u></h4>
+        <% @rule_stores = RuleStore.all %>
+        <% @rule_stores.each do |rule_store| %>
+          <%= link_to rule_store.name, rule_store_path(rule_store) %>
+        <% end %>
+        <% if logged_in? %>
+          <%= link_to "Create", new_rule_store_path %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</li>

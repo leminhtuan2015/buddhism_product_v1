@@ -1,0 +1,55 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Bài giảng"%></li>
+  <li><%= @lecture_store.name %></li>
+</ol>
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+             <%= link_to "Add lecture",  new_lecture_store_lecture_path(@lecture_store)%>
+          </li>
+          <li role="presentation">
+            <%= link_to "Edit",  edit_lecture_store_path(@lecture_store)%>
+          </li>
+          <li role="presentation">
+             <%= link_to "Delete", lecture_store_path(@lecture_store),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<div>
+<% @lectures.each do |lecture| %>
+<% @image = lecture.url.split('/').last %>
+<% @img = "http://img.youtube.com/vi/#{@image}/0.jpg" %>
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail thumbnail_w_h">
+    <%= link_to image_tag(@img), lecture_store_lecture_path(@lecture_store, lecture) %>
+      <div class="lecture_title_2">
+      <%= link_to lecture.name, lecture_store_lecture_path(@lecture_store, lecture) %>
+      </div>
+      <div class="small_info_time">
+       <%= lecture.created_at.to_date %>
+     </div>
+    </div>
+</div>
+<% end %>
+</div>
+
+<div class="thumbnail thumbnail_w_h_news_container" data-example-id="simple-thumbnails">
+    <%= will_paginate @lectures%>
+</div>

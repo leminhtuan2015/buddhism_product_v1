@@ -1,0 +1,18 @@
+<nav id="ddmenu">
+    <ul>
+      <li class="no-sub">
+        <%= link_to  "Lời ngỏ", homes_path, class: "top-heading" %>
+      </li>
+      <li class="no-sub">
+        <%= link_to "Bài mới", newfeeds_path, class: "top-heading" %>
+      </li>
+      <li class="no-sub">
+        <%= link_to "Tin tức", news_index_path, class: "top-heading" %>
+      </li>
+      <%= render 'layouts/menu/lecture' %>
+      <%= render 'layouts/menu/book' %>
+      <%= render 'layouts/menu/rule' %>
+      <%= render 'layouts/menu/article' %>
+      <%= render 'layouts/menu/photo' %>
+      <%= render 'layouts/menu/other' %>
+</nav>

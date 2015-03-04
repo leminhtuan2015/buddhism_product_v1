@@ -1,0 +1,20 @@
+<li>
+  <a class="top-heading" href="#">
+    Bài Giảng
+  </a>
+  <i class="caret"></i>         
+  <div class="dropdown">
+  <div class="dd-inner">
+    <div class="column">
+      <h4><u>Bài Giảng</u></h4>
+      <% @lecture_stores = LectureStore.all %>
+        <% @lecture_stores.each do |lecture_store| %>
+          <%= link_to lecture_store.name, lecture_store_path(lecture_store) %>
+        <% end %>
+        <% if logged_in? %>
+          <%= link_to "Create", new_lecture_store_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

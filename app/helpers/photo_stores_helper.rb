@@ -1,0 +1,2 @@
+module PhotoStoresHelper
+end

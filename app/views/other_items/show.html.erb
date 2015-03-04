@@ -1,0 +1,51 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Mục khác"%></li>
+  <li><%= link_to @other_item.other.name,"" %></li>
+  <li>
+    <%= @other_item.name %>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+              <%= link_to "Add items", new_other_other_item_other_item_detail_path(@other, @other_item) %>
+          </li>
+          <li role="presentation">
+           <%= link_to "Edit.", edit_other_other_item_path(@other, @other_item) %>
+          </li>
+          <li role="presentation">
+              <%= link_to "Delete.", other_other_item_path(@other, @other_item),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+  <% @other_item_details.each do |other_item_detail| %>
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail thumbnail_w_h">
+      <%= link_to (image_tag other_item_detail.url, width: "100%"), other_other_item_other_item_detail_path(@other, @other_item, other_item_detail )%>
+      <div class="caption center">
+      <h6>
+        <%= link_to other_item_detail.name, other_other_item_other_item_detail_path(@other, @other_item, other_item_detail) %>
+        <%= other_item_detail.description %>
+        </h6>
+      </div>
+    </div>
+ </div> 
+<% end %>

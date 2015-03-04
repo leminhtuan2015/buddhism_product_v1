@@ -1,0 +1,20 @@
+<li>
+  <a class="top-heading" href="#">
+    Hình ảnh
+  </a>
+  <i class="caret"></i>     
+  <div class="dropdown">
+  <div class="dd-inner">
+    <div class="column">
+      <h4><u>Hình ảnh</u></h4>
+        <% @photo_stores = PhotoStore.all %>
+        <% @photo_stores.each do |photo_store| %>
+          <%= link_to photo_store.name, photo_store_path(photo_store) %>
+        <% end %>
+        <% if logged_in? %>
+          <%= link_to "Create", new_photo_store_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

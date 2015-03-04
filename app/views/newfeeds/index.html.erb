@@ -1,0 +1,98 @@
+<ol class="breadcrumb">
+  <li class="active">Bài mới
+  </li>
+
+</ol>
+<div class="jumbotron bg_white_color">
+<% @newfeeds.each do |newfeed| %>
+  <% if !newfeed.news_id.to_s.empty? %>
+  <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+     <%= "[Tin tức]" %>
+     <% @news = News.find(newfeed.news_id) %>
+     <%= link_to @news.name, news_path(@news)%>
+     <h6>
+       <em>
+       <small ><%= @news.created_at.to_date %></small>
+       </em>
+     </h6>
+     <hr>
+  <% elsif !newfeed.lecture_id.to_s.empty?%>
+  <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+    <%= "[Bài Giảng]" %>
+    <% @lecture = Lecture.find(newfeed.lecture_id) %>
+    <%= link_to @lecture.name, lecture_store_lecture_path(@lecture.lecture_store, @lecture)%>
+         <h6>
+       <em>
+       <small ><%= @lecture.created_at.to_date %></small>
+       </em>
+     </h6>
+    <hr>
+  <% elsif !newfeed.book_id.to_s.empty?%>
+    <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+    <%= "[Kinh]" %>
+    <% @book = Book.find(newfeed.book_id) %>
+    <%= link_to @book.name, book_store_book_path(@book.book_store, @book)%>
+         <h6>
+       <em>
+       <small ><%= @book.created_at.to_date %></small>
+       </em>
+     </h6>
+    <hr>
+  <% elsif !newfeed.rule_id.to_s.empty?%>
+    <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+    <%= "[Luật]" %>
+    <% @rule = Rule.find(newfeed.rule_id) %>
+    <%= link_to @rule.name, rule_store_rule_path(@rule.rule_store, @rule)%>
+         <h6>
+       <em>
+       <small ><%= @rule.created_at.to_date %></small>
+       </em>
+     </h6>
+    <hr>
+  <% elsif !newfeed.article_id.to_s.empty?%>
+    <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+    <%= "[Luận]" %>
+    <% @article = Article.find(newfeed.article_id) %>
+    <%= link_to @article.name, article_store_article_path(@article.article_store, @article)%>
+         <h6>
+       <em>
+       <small ><%= @article.created_at.to_date %></small>
+       </em>
+     </h6>
+    <hr>
+  <% elsif !newfeed.album_id.to_s.empty?%>
+    <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+    <%= "[Hình ảnh]" %>
+    <% @album = Album.find(newfeed.album_id) %>
+    <%= link_to @album.name, photo_store_album_path(@album.photo_store, @album)%>
+         <h6>
+       <em>
+       <small ><%= @album.created_at.to_date %></small>
+       </em>
+     </h6>
+    <hr>
+  <% elsif !newfeed.other_item_detail_id.to_s.empty?%>
+    <% @other_item_detail = OtherItemDetail.find(newfeed.other_item_detail_id) %>
+      <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+    <%= "[#{@other_item_detail.other_item.name}]" %>
+    <%= link_to @other_item_detail.name, other_other_item_other_item_detail_path(@other_item_detail.other_item.other, @other_item_detail.other_item, @other_item_detail)%>
+         <h6>
+       <em>
+       <small ><%= @other_item_detail.created_at.to_date %></small>
+       </em>
+     </h6>
+     <hr>
+  <% end %>
+<% end %>
+</div>
+
+  <div class="container">
+    <%= will_paginate @newfeeds%>
+  </div>

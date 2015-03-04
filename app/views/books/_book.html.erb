@@ -1,0 +1,24 @@
+  <% if !book.image_link.empty? %>
+    <% @image = book.image_link %>
+  <% else %>
+    <% @image = book.image_upload.url %>
+  <% end %>
+<div class="thumbnail thumbnail_w_h_news_container" data-example-id="simple-thumbnails">
+        <div class="thumbnail thumbnail_w_h_news">
+          <%= link_to (image_tag @image), book_store_book_path(book.book_store, book) %>
+        </div>
+        <div class="caption">
+            <%= link_to book.name, book_store_book_path(book.book_store, book)%>
+        </div>
+        <div >
+        <p >
+            <%= book.content.truncate_words(200).html_safe%>
+            <%= link_to "Chi tiết", book_store_book_path(book.book_store, book), class: "news_detail"%>
+        </p>
+      </div>
+      <div class="small_info_time">
+         <%= book.created_at.to_date %>
+        </div>
+  </div>
+
+

@@ -1,0 +1,42 @@
+<ol class="breadcrumb">
+  <li class="active"><%= "Tin tức" %></li>
+</ol>
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+            <%= link_to "Add news", new_news_path%>
+          </li>
+          <li role="presentation" class="divider"></li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+<div class="breadcrumb_retative">
+<ol class="breadcrumb breadcrumb_retative bg_breadcrumb">
+  <li><%= link_to "Bài liên quan"%></li>
+  </ol>
+<div class=" bg_white_color breadcrumb_retative">
+<% @newses.sample(10).each do |news| %>
+  <div class="thumbnail caption news_title_thumnail">
+  <span class="glyphicon glyphicon-pushpin" aria-hidden="true">
+  </span>
+     <%= link_to news.name, news_path(news) %>
+    <div class="small_info_time">
+     <%= news.created_at.to_date %>
+   </div>
+   </div>
+<hr>
+<% end %>
+</div>
+</div>
+
+<%= render News.order('created_at DESC') %>

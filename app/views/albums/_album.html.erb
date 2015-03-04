@@ -1,0 +1,18 @@
+<div class="bs-example" data-example-id="simple-thumbnails">
+    <div class="thumbnail_w_h thumbnail">
+        <% if album.photos.first != nil %>
+            <%= link_to (image_tag album.photos.first.url_url), photo_store_album_path(@photo_store, album)%>
+        <% else %>
+          <%= link_to (image_tag "http://res.cloudinary.com/buddhism/image/upload/v1425021711/Gallery_jfl2o9.jpg"), photo_store_album_path(@photo_store, album)%>
+        <% end %>
+       <div class="center caption">
+        <%= link_to "#{album.name }( #{album.photos.count} photos)", photo_store_album_path(@photo_store, album) %>
+        </div>
+        <div>
+        	<%= album.description %>
+        </div>
+        <div class="small_info_time">
+        <%= album.created_at.to_date %>
+       </div>
+    </div>
+ </div> 

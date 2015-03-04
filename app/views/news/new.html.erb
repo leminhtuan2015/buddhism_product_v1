@@ -1,0 +1,42 @@
+<div class="bs-example" data-example-id="basic-forms">
+  <%= form_for(@news, html: {multipart: true}) do |f| %>
+    <div class="form-group">
+      <label>Name</label>
+      <%= f.text_field :name, class: "form-control",
+                                  placeholder: "Name" %>
+    </div>
+    <div class="form-group">
+      <label>During</label>
+      <%= f.text_field :during, class: "form-control",
+                                  placeholder: "During" %>
+    </div>
+    <div class="form-group">
+      <label>Place</label>
+      <%= f.text_field :place, class: "form-control",
+                                  placeholder: "Place" %>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <%= f.text_field :description, class: "form-control",
+                                  placeholder: "Description" %>
+    </div>
+      <div class="form-group">
+      <label>Image-link</label>
+      <%= f.text_field :image_link, class: "form-control",
+                                  placeholder: "Image_link" %>
+    </div>
+    <div class="form-group">
+      <label>Image-file</label>
+      <%= f.file_field :image_upload, type: :file %>
+    </div>
+
+    <div class="form-group">
+      <label>Content</label>
+      <%= f.text_area :content, class: "form-control tinymce",
+                                  placeholder: "Content" %>
+    </div>
+
+    <button type="submit" class="btn btn-default">Create
+    </button>
+  <% end %>
+</div>

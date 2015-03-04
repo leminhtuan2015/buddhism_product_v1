@@ -1,0 +1,46 @@
+<ol class="breadcrumb">
+  <li><%= link_to "Hình ảnh"%></li>
+  <li>
+    <%= link_to @album.photo_store.name, photo_store_path(@album.photo_store) %>
+  </li>
+    <li>
+    <%= @album.name %>
+  </li>
+</ol>
+
+<% if logged_in? %>
+<div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+          Action
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation">
+              <%= link_to "Add photos", new_photo_store_album_photo_path(@album.photo_store, @album) %>
+          </li>
+          <li role="presentation">
+           <%= link_to "Edit.", edit_photo_store_album_path(@album.photo_store, @album) %>
+          </li>
+          <li role="presentation">
+              <%= link_to "Delete.", photo_store_album_path(@album.photo_store, @album),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+          </li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation">
+            
+          </li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div>
+<% end %>
+
+
+<%= render @photos %>
+
+<div class="thumbnail thumbnail_w_h_news_container" data-example-id="simple-thumbnails">
+    <%= will_paginate @photos %>
+</div>

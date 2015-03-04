@@ -1,0 +1,11 @@
+<% if logged_in? %>
+<%= link_to "Add banner",new_banner_path %>
+<hr>
+<% @banners.each do |banner|%>
+  <%= image_tag banner.url %>
+  <%= link_to "Delete.", banner_path(banner),
+                    method: :delete,
+                    data: { confirm: 'Make sure you want to do this?' }%>
+  <hr>
+<% end %>
+<% end %>
